@@ -34,7 +34,7 @@ public class Player : ISubject, IComparable<Player>
         // singleton pour le modificateur
         int actualDamage = (int)(damage * GameSettings.Instance.DamageModifier);
         this.Health -= actualDamage;
-
+        
         Console.WriteLine($"\t{Name} subit {actualDamage} points de dégâts ! PV restants : {Health}");
 
         // L'état du joueur a changé, il notifie tous ses observateurs !
@@ -54,8 +54,6 @@ public class Player : ISubject, IComparable<Player>
         _health += amount;
     }
 
-    // --- Implémentation de l'interface ISubject ---
-
     public void Attach(IObserver observer)
     {
         _observers.Add(observer);
@@ -68,9 +66,6 @@ public class Player : ISubject, IComparable<Player>
 
     public void Notify()
     {
-        // On fait une boucle sur tous les observateurs
-        // et on appelle leur méthode Update().
-        // On passe 'this' (le joueur lui-même) en paramètre.
         foreach (var observer in _observers)
         {
             observer.Update(this);
@@ -79,7 +74,7 @@ public class Player : ISubject, IComparable<Player>
 
     public int CompareTo(Player? other)
     {
-        if (other == null)
+        if (other == null) 
         {
             return 1;
         }

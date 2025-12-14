@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 
-// Patterns utilisés : Observer + Decorator + Factory + Strategy + IComparable
 
 public class Program
 {
@@ -65,11 +64,9 @@ public class Program
         player1.Attach(gameOverManager);
         player2.Attach(gameOverManager);
 
-        // 1. On crée la Factory (nécessaire pour la stratégie d'attaque)
         IWeaponFactory weaponFactory = new RandomWeaponFactory();
 
-        // 2. On assigne les stratégies aux joueurs (Strategy Pattern)
-        // Les deux utilisent la stratégie "Intelligente"
+
         player1.CombatStrategy = new SmartStrategy(weaponFactory);
         player2.CombatStrategy = new SmartStrategy(weaponFactory);
 
@@ -97,14 +94,9 @@ public class Program
 
         simTimer.Stop();
 
-        // --- UTILISATION DE ICOMPARABLE ---
-        // Une fois la boucle terminée, on utilise CompareTo pour voir qui est en meilleur état
 
-        Console.WriteLine("\n-------------------------------------------");
-        Console.WriteLine("--- ANALYSE DE FIN DE PARTIE (IComparable) ---");
-        Console.WriteLine("-------------------------------------------");
+        Console.WriteLine("  Analyse fin de partie ");
 
-        // Utilisation de la méthode CompareTo implémentée dans Player.cs
         int resultatComparaison = player1.CompareTo(player2);
 
         Console.WriteLine($"PV Finaux -> {player1.Name}: {player1.Health} | {player2.Name}: {player2.Health}");

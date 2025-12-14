@@ -5,7 +5,7 @@ public class RandomWeaponFactory : IWeaponFactory
 {
     public IWeapon CreateWeapon()
     {
-        // On récupère le générateur aléatoire du Singleton
+       
         Random rng = GameSettings.Instance.Rng;
 
         IWeapon weapon;
@@ -21,7 +21,7 @@ public class RandomWeaponFactory : IWeaponFactory
         }
 
 
-        // Appliquer decorator
+        // appliquer decorator
         // 50% change decorator fire
         if (rng.Next(0, 2) == 0)
         {

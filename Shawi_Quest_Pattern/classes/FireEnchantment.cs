@@ -3,7 +3,6 @@ public class FireEnchantment : WeaponDecorator
 {
     public FireEnchantment(IWeapon weapon) : base(weapon) { }
 
-    // On decore les methodes de base
     public override int GetBaseDamage()
     {
         // Degats de l'arme + degats de feu
